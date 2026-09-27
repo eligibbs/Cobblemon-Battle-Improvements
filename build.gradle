@@ -138,6 +138,11 @@ dependencies {
     implementation "com.cobblemon:neoforge:1.8.1+1.21.1"
     implementation "thedarkcolour:kotlinforforge-neoforge:5.10.0"
 
+    // Optional integration: Cobbledex (https://github.com/Rafacasari/cobbledex), fetched from Modrinth.
+    // compileOnly so the published jar does not require it; localRuntime so it is present in dev runs.
+    compileOnly "maven.modrinth:cobblemon-pokedex:${cobbledex_version}"
+    localRuntime "maven.modrinth:cobblemon-pokedex:${cobbledex_version}"
+
     testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
     testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 

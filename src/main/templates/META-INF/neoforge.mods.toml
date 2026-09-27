@@ -91,6 +91,14 @@ config="${mod_id}.mixins.json"
     ordering="NONE"
     side="BOTH"
 
+# Optional integration: when Cobbledex is installed, its discoveries also unlock the Cobblemon Pokédex entry.
+[[dependencies.${mod_id}]] #optional
+    modId="cobbledex"
+    type="optional"
+    versionRange="[1.3.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
 # Here's another dependency
 [[dependencies.${mod_id}]]
     modId="minecraft"
