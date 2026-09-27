@@ -28,6 +28,25 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    maven {
+        name = "Cobblemon"
+        url = "https://maven.impactdev.net/repository/development/"
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {
+        name = "CurseMaven"
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        name = "KotlinForForge"
+        url = "https://thedarkcolour.github.io/KotlinForForge/"
+    }
 }
 
 base {
@@ -116,6 +135,12 @@ configurations {
 }
 
 dependencies {
+    implementation "com.cobblemon:neoforge:1.8.1+1.21.1"
+    implementation "thedarkcolour:kotlinforforge-neoforge:5.10.0"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
@@ -162,6 +187,10 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
 sourceSets.main.resources.srcDir generateModMetadata
 // To avoid having to run "generateModMetadata" manually, make it run on every project reload
 neoForge.ideSyncTask generateModMetadata
+neoForge.ideSyncTask tasks.named("prepareClientRun")
+neoForge.ideSyncTask tasks.named("prepareServerRun")
+neoForge.ideSyncTask tasks.named("prepareDataRun")
+neoForge.ideSyncTask tasks.named("prepareGameTestServerRun")
 
 // Example configuration to allow publishing using the maven-publish plugin
 publishing {
@@ -187,4 +216,8 @@ idea {
         downloadSources = true
         downloadJavadoc = true
     }
+}
+
+test {
+    useJUnitPlatform()
 }

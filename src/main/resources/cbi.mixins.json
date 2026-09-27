@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.eligibbs.cbi.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "cbi.refmap.json",
+  "mixins": [
+    "BattleActorMixin",
+    "BattleRegistryMixin",
+    "ChallengeHandlerMixin",
+    "ChallengeManagerMixin",
+    "PokemonBattleMixin",
+    "RequestInstructionMixin",
+    "RequestInteractionsHandlerMixin",
+    "ShowdownInterpreterMixin"
+  ],
+  "client": [
+    "client.BattleSwitchPokemonSelectionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

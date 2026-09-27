@@ -50,8 +50,8 @@ Example mod description.
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
-#[[mixins]]
-#config="${mod_id}.mixins.json"
+[[mixins]]
+config="${mod_id}.mixins.json"
 
 # The [[accessTransformers]] block allows you to declare where your AT file is.
 # If this block is omitted, a fallback attempt will be made to load an AT from META-INF/accesstransformer.cfg
@@ -75,6 +75,20 @@ Example mod description.
     # AFTER - This mod is loaded AFTER the dependency
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT, or SERVER
+    side="BOTH"
+
+[[dependencies.${mod_id}]] #optional
+    modId="cobblemon"
+    type="required"
+    versionRange="[1.8.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]] #optional
+    modId="kotlinforforge"
+    type="required"
+    versionRange="[5.10,)"
+    ordering="NONE"
     side="BOTH"
 
 # Here's another dependency
